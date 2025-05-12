@@ -16,6 +16,7 @@ int	check_column_down(int board[4][4], int *views, int col);
 int	check_row_left(int board[4][4], int *views, int row);
 int	check_row_right(int board[4][4], int *views, int row);
 
+/* Checks if you can actually put the number in the cell. Returns 0 if the digit is already present in the row or col */
 int	is_valid_placement(int board[4][4], int row, int col, int height)
 {
 	int	i;
@@ -29,7 +30,7 @@ int	is_valid_placement(int board[4][4], int row, int col, int height)
 	}
 	return (1);
 }
-
+/* Checks the views in all different directions */
 int	check_views(int board[4][4], int *views)
 {
 	int	i;

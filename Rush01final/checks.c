@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* counts how much you see from the viewpoint */
 int	count_visible(int *line)
 {
 	int	max;
@@ -51,7 +52,9 @@ int	check_column_down(int board[4][4], int *views, int col)
 
 	j = -1;
 	while (++j < 4)
+		/* you have to start from 3 to 0 -> so 4 - 1 - 3 (4 becuase i thought i would be able to do more than 4x4 :c) */
 		line[4 - 1 - j] = board[j][col];
+		/* 4 + col because views is a single dimension array, not a matrix/grid*/
 	if (views[4 + col] != 0 && count_visible(line) != views[4 + col])
 		return (0);
 	return (1);
@@ -65,6 +68,7 @@ int	check_row_left(int board[4][4], int *views, int row)
 	j = -1;
 	while (++j < 4)
 		line[j] = board[row][j];
+		/* 8 + col because views is a single dimension array, not a matrix/grid*/
 	if (views[8 + row] != 0 && count_visible(line) != views[8 + row])
 		return (0);
 	return (1);
@@ -77,7 +81,9 @@ int	check_row_right(int board[4][4], int *views, int row)
 
 	j = -1;
 	while (++j < 4)
+		/* you have to start from 3 to 0 -> so 4 - 1 - 3 (4 becuase i thought i would be able to do more than 4x4 :c) */
 		line[4 - 1 - j] = board[row][j];
+		/* 12 + col because views is a single dimension array, not a matrix/grid*/
 	if (views[12 + row] != 0 && count_visible(line) != views[12 + row])
 		return (0);
 	return (1);
